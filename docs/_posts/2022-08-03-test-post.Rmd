@@ -3,6 +3,8 @@ title: "test post"
 author: "Grant Gannaway"
 date: "2022-08-04"
 output: github_document
+layout: post
+categories: CATEGORY-1 CATEGORY-2
 ---
 
 ```{r setup, include=FALSE}
