@@ -8,7 +8,8 @@ Here are some things that are important for each post…
 
 The rmarkdown file must be named “YYYY-MM-DD-name-of-post.Rmd”. Github
 pages will automatically title the post “name of post” (with the dashes
-replaced by spaces).
+replaced by spaces). The file name doesn’t need to be capitalized,
+jekyll will capitalize the post title automatically.
 
 ## File organization
 
