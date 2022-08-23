@@ -35,11 +35,7 @@ plugins:
   - jekyll-include-cache
 
 # Analytics
-analytics:
-  provider               : "google-gtag"
-  google:
-    measurement_id          : "G-JG1TVQ5S9W"
-    anonymize_ip         : # true, false (default)
+google_analytics: G-JG1TVQ5S9W
   
 minimal_mistakes_skin: "contrast" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
