@@ -18,7 +18,14 @@ The second caveat is that I limit to managers who managed at least 50
 games that season. This will come back later on, but the idea is to get
 rid of managers who only managed one or two games that season.
 
-## Why do I care about this figure?
+The idea here is that starting pitchers who are pulled mid-inning give
+up a home run on the last batter they face more frequently than on the
+second-to-last batter they face. Does giving up a home run cause the
+manager to pull the pitcher? It looks like there is a “ramping up” - as
+pitchers get closer to the end of the line, they get increasingly likely
+to give up a home run.
+
+![](/assets/plots2-1.png)
 
 ### Coding things I learned on this post
 
