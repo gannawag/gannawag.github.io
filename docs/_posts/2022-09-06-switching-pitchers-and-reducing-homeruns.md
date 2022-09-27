@@ -4,19 +4,21 @@ Here is a plot that has been on my mind for a while:
 
 It shows the mean number of home runs relative to the last batter a
 starting pitcher faces, with a few caveats. The first caveat is that I
-limit to *mid-inning* **pitching changes** but I also INCLUDE all other
-at bats that were not pitching changes. So the at bat that is 5 batters
-before the starting pitcher’s final batter is inlcuded regardless of
-whether it was the final out of the inning or not, but if a pitching
-change happens in between innings, I don’t include that starting
-pitcher’s final batter faced. The idea here is that I am most interested
-in those mid-inning pitching changes. I want to know why managers pulled
-their starter mid inning, and I don’t want to cut out the earlier
-at-bats that may have ended an inning.
+limit to managers who managed at least 50 games that season. This will
+come back later on, but the idea is to get rid of managers who only
+managed one or two games that season.
 
-The second caveat is that I limit to managers who managed at least 50
-games that season. This will come back later on, but the idea is to get
-rid of managers who only managed one or two games that season.
+The second caveat has to do with the dotted line part of the figure. The
+solid lines include *all* at bats for the given “batters since starting
+pitcher final batter”. But the dotted line for the final batter faced by
+the starter *excludes* final batters where the at bat was the last at
+bat of the inning. In other words, the dashed line only includes
+situations where the pitcher was pulled *mid-inning*. (If you want to
+know the percent of at-bats that were the final at bat of the inning as
+well as the final batter faced by the starter…it’s very close to 0%
+since the final at bat of an inning is never a home run unless it’s a
+walk off and starters rarely make it to the final innings of a game any
+more).
 
 The idea here is that starting pitchers who are pulled mid-inning give
 up a home run on the last batter they face more frequently than on the
