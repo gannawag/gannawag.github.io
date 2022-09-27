@@ -50,7 +50,20 @@ block right below the header with the following:
     knitr::opts_chunk$set(echo = TRUE)
     knitr::opts_chunk$set(fig.path ="/assets/")
 
-### Including Plots Example
+## Had some issues with figures
+
+This post solved my issues:
+<http://www.randigriffin.com/2017/04/25/how-to-knit-for-mysite.html#>:~:text=knit%20SENDS%20your%20figures%20to%20base.dir%20%2B%20fig.path%2C,to%20define%20an%20absolute%20path%20on%20my%20machine%3A
+
+I had to change the figure option to this:
+
+    knitr::opts_knit$set(base.dir = "~/gannawag.github.io/docs/", base.url = "/")
+    knitr::opts_chunk$set(fig.path = "assets/")
+
+Need to be sure we are populating the correct `assets` folder (should be
+in the project directory).
+
+### Including Plots Example to make sure it works
 
 ![](/assets/pressure-1.png)
 
