@@ -92,44 +92,6 @@ current at bat.
 
 Looking only at the differences:
 
-    plot_dt = dcast(dt[starting_pitcher_dummy == 1 & pitch_seq == 1 & !is.na(last_batter_result_out) ,
-       .(mean_out_current = mean(result_out)),
-       by = .( times_through_lineup, last_batter_result_out, matchup.pitcher.fullName)],
-       matchup.pitcher.fullName + times_through_lineup ~ last_batter_result_out,
-       value.var = "mean_out_current"
-    )[, .(matchup.pitcher.fullName, times_through_lineup, last_batter_result_out = `1`,last_batter_result_nonout=`0`,
-          last_out_minus_last_nonout = `1` - `0`)]
-    sum_plot_dt_1= plot_dt[times_through_lineup < 4, .(mean = mean(last_out_minus_last_nonout, na.rm=T)), by = .(times_through_lineup)]
-
-
-    ggdraw(align_legend(
-    ggplot(plot_dt[times_through_lineup < 4]) + 
-      geom_density(aes(x=100*last_out_minus_last_nonout, color = as.factor(times_through_lineup))) + 
-      theme_bw() + 
-      theme(text = element_text(size = 20), 
-            axis.text = element_text(size = 15),
-            legend.position = c(0.77,0.75),
-            legend.background = element_blank(),
-            legend.direction = "horizontal",
-            legend.title = element_text(size = 20),
-            strip.text = element_text(size = 10)) + 
-      xlab("Percentage Point Difference in\nShare of at bats resulting in an out\n(excluding sac fly and sac bunt)") + 
-      ylab("Density") + 
-      scale_x_continuous(breaks = seq(-90,90,30)) + 
-      geom_vline(data = sum_plot_dt_1,
-                 aes(xintercept = mean, color = as.factor(times_through_lineup))) + 
-      scale_color_discrete(name="Times Through Lineup", guide = guide_legend(title.position = "top")) + 
-      geom_text(aes(x=-60,y=0.025,label=paste0("Difference in\nShare of ABs resulting in an out averages:\n",
-                                            "First time through lineup: ",
-                                            100*round(sum_plot_dt_1[times_through_lineup ==1]$mean,3),
-                                            "pp\nSecond time through lineup: ",
-                                            100*round(sum_plot_dt_1[times_through_lineup ==2]$mean,3),
-                                            "pp\nThird time through lineup: ",
-                                            100*round(sum_plot_dt_1[times_through_lineup ==3]$mean,3),
-                                            "pp"
-                                            ))) 
-    )) 
-
     ## Warning: Removed 22 rows containing non-finite values (stat_density).
 
 ![](/assets/diff-1.png) The first time through the lineup, the average
@@ -154,9 +116,13 @@ proxy for what will happen on the next at bat. If a pitcher is not
 streaky it might make sense to leave him in if the last at bat was not
 an out.
 
+    ## Warning: Removed 21 rows containing missing values (geom_point).
+
+![](/assets/pitcher_ranks-1.png)
+
     ## Warning: Removed 22 rows containing missing values (geom_point).
 
-![](/assets/pitcher_ranks-1.png) This plot gives an approximation of
+![](/assets/pitcher_ranks-2.png) This plot gives an approximation of
 streakiness. The pitchers in the top right get a higher percentage of
 outs regardless of what happened on the last AB. They are consistently
 good. The pitchers in the bottom left quadrant on the other hand, are
@@ -265,11 +231,6 @@ spike magnitude. Just regress the indicator for hit or walk on a full
 set of “batters since pitcher final AB” indicators.
 `Non-Out ~ \Sum \beta_{\tau} 1(batter since = \tau) + \epsilon`.
 
-    for (X in seq(-15,15)){
-      print(X)
-      dt[, paste0("bs_",X) := ifelse(batters_since_starter_max_batter == X, 1, 0)]
-    }
-
     ## [1] -15
     ## [1] -14
     ## [1] -13
@@ -302,33 +263,9 @@ set of “batters since pitcher final AB” indicators.
     ## [1] 14
     ## [1] 15
 
-    dt[, quantiles_pasted := paste0(quantile_out_out,"-",quantile_nonout_out)]
-    dt[, teams_pasted := paste0(home_team,"-",away_team)]
-
-    reg <- lm(result_hit_or_walk ~ 
-                  as.factor(quantiles_pasted):(`bs_-15` + `bs_-14` + `bs_-13` + `bs_-12` + `bs_-11` + `bs_-10` + `bs_-9` + `bs_-8` + `bs_-7` + `bs_-6` + 
-                                                                   `bs_-5` + `bs_-4` + `bs_-3` + `bs_-2` + #`bs_-1` + 
-                 bs_0 + bs_1 + bs_2 + bs_3 + bs_4 + bs_5 + bs_6 + bs_7 + bs_8 + bs_9 + bs_10 + bs_11 + bs_12 + bs_13 + bs_14 + bs_15) +
-                 as.factor(about.inning) + as.factor(times_through_lineup) + about.isTopInning + home_team + away_team +teams_pasted+ result.awayScore + result.homeScore + pitchNumber 
-                 ,
-               data = dt[pitch_seq == 1 & batters_since_starter_max_batter %between% c(-15,15) & 
-                ((count.outs.end < 3 & batters_since_starter_max_batter == 0) |
-                   (batters_since_starter_max_batter != 0) ) &
-                  times_through_lineup < 4 &
-                  !is.na(quantile_diff) &
-                ((home_manager_total_games > 50 & about.halfInning == "top") |
-                (away_manager_total_games > 50 & about.halfInning == "bottom")),])
-    reg_dt <- data.table(summary(reg)$coefficients)
-    reg_dt[, coefs := row.names(summary(reg)$coefficients)]
-    reg_dt[, bs := as.numeric(gsub("`","",gsub(".*?:bs_","", coefs)))]
-
     ## Warning in eval(jsub, SDenv, parent.frame()): NAs introduced by coercion
 
-    reg_dt[!is.na(bs), quantiles := gsub("as.factor.quantiles_pasted.","",gsub(":bs_.*","", coefs))]
-    reg_dt <- rbindlist(list(reg_dt, data.table(bs=rep(-1,4), quantiles = c("1-1","1-2","2-1","2-2"), Estimate = rep(0,4), `Std. Error` = rep(0,4))), fill=T)
-
-    ggplot(reg_dt[!is.na(quantiles) & bs == 0]) + 
-      geom_bar(aes(x=quantiles,y=Estimate, fill = quantiles), stat = "identity")
+    ## Warning: Ignoring unknown aesthetics: fill
 
 ![](/assets/reg-1.png)
 
