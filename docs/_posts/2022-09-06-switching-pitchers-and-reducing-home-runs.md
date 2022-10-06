@@ -90,18 +90,15 @@ is evidence for serial correlation, since it would suggest that when the
 previous at bat was an out pitchers are more likely to get an out on the
 current at bat.
 
-Looking only at the differences:
-
-    ## Warning: Removed 22 rows containing non-finite values (stat_density).
-
-![](/assets/diff-1.png) The first time through the lineup, the average
-pitcher is actually slightly *less* likely to get an out on the current
-batter when the previous at bat was an out vs when the previous at bat
-was not an out. The difference is small - less than one percentage
-point. The second and third times through the lineup the magnitude of
-the average differences decreases, but the sign flips, meaning the
-average pitcher is slightly more likely to get an out on the current
-batter when the previous at bat was an out vs when it was not an out.
+Looking only at the differences: ![](/assets/diff-1.png) The first time
+through the lineup, the average pitcher is actually slightly *less*
+likely to get an out on the current batter when the previous at bat was
+an out vs when the previous at bat was not an out. The difference is
+small - less than one percentage point. The second and third times
+through the lineup the magnitude of the average differences decreases,
+but the sign flips, meaning the average pitcher is slightly more likely
+to get an out on the current batter when the previous at bat was an out
+vs when it was not an out.
 
 But as is visible from the plot, the distributions are relatively spread
 out, implying there is wide variation in pitcher “streakiness”. If a
@@ -116,22 +113,16 @@ proxy for what will happen on the next at bat. If a pitcher is not
 streaky it might make sense to leave him in if the last at bat was not
 an out.
 
-    ## Warning: Removed 21 rows containing missing values (geom_point).
-
-![](/assets/pitcher_ranks-1.png)
-
-    ## Warning: Removed 22 rows containing missing values (geom_point).
-
-![](/assets/pitcher_ranks-2.png) This plot gives an approximation of
-streakiness. The pitchers in the top right get a higher percentage of
-outs regardless of what happened on the last AB. They are consistently
-good. The pitchers in the bottom left quadrant on the other hand, are
-consistently bad. The players in the bottom right are the streaky
-players. They get are more likely to get an out if they got on about on
-the last AB than if they didn’t get an out on the last AB. The players
-in the top left are “reverse” streaky. They are more likely to get an
-out on the current AB if they did *not* get an out on the last AB than
-if they did get an out on the last AB.
+![](/assets/pitcher_ranks-1.png)![](/assets/pitcher_ranks-2.png) This
+plot gives an approximation of streakiness. The pitchers in the top
+right get a higher percentage of outs regardless of what happened on the
+last AB. They are consistently good. The pitchers in the bottom left
+quadrant on the other hand, are consistently bad. The players in the
+bottom right are the streaky players. They get are more likely to get an
+out if they got on about on the last AB than if they didn’t get an out
+on the last AB. The players in the top left are “reverse” streaky. They
+are more likely to get an out on the current AB if they did *not* get an
+out on the last AB than if they did get an out on the last AB.
 
 Splitting the pitchers into these four groups gives a straightforward
 way to test for differences in final AB behavior. If the streaky
@@ -147,71 +138,7 @@ have the highest share of *outs* on their final AB, since getting an out
 for this group actually might predict that the next batter is likely to
 not get out.
 
-    ## Warning in `[.data.table`(dt, , `:=`(quantile_diff, NULL)): Column
-    ## 'quantile_diff' does not exist to remove
-
-    ## Warning in `[.data.table`(dt, , `:=`(quantile_out_out, NULL)): Column
-    ## 'quantile_out_out' does not exist to remove
-
-    ## Warning in `[.data.table`(dt, , `:=`(quantile_nonout_out, NULL)): Column
-    ## 'quantile_nonout_out' does not exist to remove
-
-    ## `geom_smooth()` using formula 'y ~ x'
-
-    ## Warning: Removed 3 rows containing non-finite values (stat_smooth).
-
-    ## Warning in qt((1 - level)/2, df): NaNs produced
-
-    ## Warning in qt((1 - level)/2, df): NaNs produced
-
-    ## Warning in qt((1 - level)/2, df): NaNs produced
-
-    ## Warning in qt((1 - level)/2, df): NaNs produced
-
-    ## Warning: Removed 3 rows containing missing values (geom_point).
-
-    ## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
-    ## -Inf
-
-    ## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
-    ## -Inf
-
-    ## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
-    ## -Inf
-
-    ## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
-    ## -Inf
-
-![](/assets/unnamed-chunk-1-1.png)
-
-    ##     batters_since_starter_max_batter times_through_lineup quantile_out_out
-    ##  1:                                0                    1                1
-    ##  2:                                0                    1                2
-    ##  3:                                0                    1                2
-    ##  4:                                0                    1                1
-    ##  5:                                0                    2                1
-    ##  6:                                0                    2                2
-    ##  7:                                0                    2                1
-    ##  8:                                0                    2                2
-    ##  9:                                0                    3                2
-    ## 10:                                0                    3                1
-    ## 11:                                0                    3                1
-    ## 12:                                0                    3                2
-    ##     quantile_nonout_out        V1        V2
-    ##  1:                   1 0.8214286 0.3149704
-    ##  2:                   2 0.5263158 0.2294157
-    ##  3:                   1 0.8333333 0.3806935
-    ##  4:                   2 0.7000000 0.0000000
-    ##  5:                   2 0.7727273 0.2908034
-    ##  6:                   1 0.8333333 0.3541688
-    ##  7:                   1 0.8095238 0.3309438
-    ##  8:                   2 0.6964286 0.2877364
-    ##  9:                   2 0.7507599 0.2883111
-    ## 10:                   2 0.8010899 0.2658308
-    ## 11:                   1 0.8379121 0.2485084
-    ## 12:                   1 0.8145897 0.2883111
-
-![](/assets/unnamed-chunk-1-2.png)![](/assets/unnamed-chunk-1-3.png)![](/assets/unnamed-chunk-1-4.png)
+![](/assets/unnamed-chunk-1-1.png)![](/assets/unnamed-chunk-1-2.png)![](/assets/unnamed-chunk-1-3.png)
 My first conclusion from this figure is that all types of pitchers see a
 spike in hits or walks on their last batter. The streaky pitchers (third
 row) seem to have the biggest spike. This makes sense - managers seems
@@ -229,53 +156,26 @@ pitchers).
 We can throw this data into a regression to add controls and measure the
 spike magnitude. Just regress the indicator for hit or walk on a full
 set of “batters since pitcher final AB” indicators.
-`Non-Out ~ \Sum \beta_{\tau} 1(batter since = \tau) + \epsilon`.
-
-    ## [1] -15
-    ## [1] -14
-    ## [1] -13
-    ## [1] -12
-    ## [1] -11
-    ## [1] -10
-    ## [1] -9
-    ## [1] -8
-    ## [1] -7
-    ## [1] -6
-    ## [1] -5
-    ## [1] -4
-    ## [1] -3
-    ## [1] -2
-    ## [1] -1
-    ## [1] 0
-    ## [1] 1
-    ## [1] 2
-    ## [1] 3
-    ## [1] 4
-    ## [1] 5
-    ## [1] 6
-    ## [1] 7
-    ## [1] 8
-    ## [1] 9
-    ## [1] 10
-    ## [1] 11
-    ## [1] 12
-    ## [1] 13
-    ## [1] 14
-    ## [1] 15
-
-    ## Warning in eval(jsub, SDenv, parent.frame()): NAs introduced by coercion
-
-    ## Warning: Ignoring unknown aesthetics: fill
+$Non-Out ~ \Sum \beta\_{\tau} 1(batter since = \tau) + \epsilon$.
 
 ![](/assets/reg-1.png)
 
 All this taken together seems to suggest that managers are good, but not
 perfect at predicting what will happen on the next AB (especially when
 looking at the reverse streaky pitchers). Should streaky players be
-pulled at the same frequnecy as bad pitchers? Do managers have access to
-a more accurate prediction algorithm than just pitcher streakiness? One
-more step before I show any actual machine learning predictions: lets
-see if certain managers are better than others at making predictions.
+pulled at the same frequency as bad pitchers? Do managers have access to
+a more accurate prediction algorithm than just pitcher streakiness? In
+part 2 I will use machine learning to predict the outcome of the next AB
+and see if managers are acting based off what they expect to happen next
+instead of what happened last.
+
+## Links
+
+Video on how I got the data for this post:
+<https://youtu.be/hihO-vgAjS8>
+
+Contact me if you have any suggestions or ideas for future posts:
+<https://www.linkedin.com/in/grant-gannaway-321ba326/>
 
 ### Coding things I learned on this post
 
