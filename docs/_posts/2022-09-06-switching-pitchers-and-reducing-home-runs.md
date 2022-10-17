@@ -57,42 +57,59 @@ this question to the data.
 I started with this figure ![](/assets/conditional_outs_17oct2022-1.png)
 This figure shows the percent of at bats that were a starting pitcher’s
 last at bat of the game, split by whether the pitcher got an out on the
-previous batter or not. So if a pitcher got an out on the previous
-batter, there is a XX% chance that the current batter is the last batter
-he will face vs if he did not get an out on the previous batter, there
-is a XX% chance the current batter will be his last. This is a figure
-about the probability of getting pulled conditional on result of the
-last AB.
+previous batter or not. This is a figure about the probability of
+getting pulled, conditional on result of the last AB. So among all the
+at bats that ended in an out, 2.7% of them were the final at bat for the
+pitcher that game. On the other hand, if the pitcher did not get an out,
+only 2.4% of those at bats were the pitcher’s final at bat that game.
+Now this seems contrary to intuition: shouldn’t a pitcher get pulled
+*less* frequently if he got an out than if he didn’t? The problem with
+the above figure is that it includes end-of-inning substitutions. And
+100% of those substitutions come after a pitcher got an out (otherwise
+the inning wouldn’t be over). These end-of-inning substitutions are the
+most frequent kind of substitution, and not what happened to Blake Snell
+in 2020. He was pulled *mid-inning* after **not** getting an out.
 
 Look at what happens if I limit to mid-inning switches
 ![](/assets/conditional_outs_17oct2022_2-1.png) You can see that while
-there is only a 1 pp difference for changes between innings, there is a
-2 pp difference for changes mid inning. Maybe those between inning
-switches were planned a little more in advance and have nothing to do
-with recency bias.
+there is less than a 1 percentage point difference for substitutions at
+the end of innings between the two different results of the previous at
+bats, there is a 2 percentage point difference for substitutions
+mid-inning. Maybe those end of inning switches were planned a little
+more in advance and have nothing to do with recency bias?
 
-Finally if I split by number of times through the lineup:
+Finally, keeping in mind Kevin Cash’s reasoning for pulling Snell, if I
+split by number of times through the lineup:
 ![](/assets/conditional_outs_17oct2022_3-1.png)
 
-You can see a big difference in the probability of being pulled after
-getting an out vs after not getting an out for the third time through
-the lineup, and this is exactly where Blake Snell was sitting in game 6
-of the 2020 world series.
+Now you can see a relatively big difference in the probability of being
+pulled after getting an out versus after not getting an out for the
+third time through the lineup, and this is exactly where Blake Snell was
+sitting in game 6 of the 2020 world series. In other words, getting
+pulled after giving up a hit or a walk the third time through the lineup
+is a lot more common than getting pulled after getting an out. So it
+*maybe* should not have been as big of a surprise for Snell to get taken
+out since he had just given up a hit.
 
 ![](/assets/17oct2022_zoom_outs-1.png) But here’s the thing: just
 because Blake did not get an out on the last AB (and he was starting his
 3rd time through the lineup), we can’t be sure he wouldn’t have gotten
-an out on his NEXT batter. This version of the plot shows the
-probability of getting an out conditional on the outcome of the last AB:
+an out on his NEXT batter. This might be Snell’s argument - just because
+he just gave up a hit, it was just one of two hits over his whole
+outing.
+
+This version of the plot shows the probability of getting an out
+conditional on the outcome of the last AB:
 ![](/assets/17oct2022_zoom_outs_2-1.png) If a pitcher got an out last
-AB, on average the current AB will result in an out XX% of the time
-(versus YY% of the time if the last AB did not end in an out). And for
+AB, on average the current AB will result in an out 49.9% of the time
+(versus 51.3% of the time if the last AB did not end in an out). And for
 completeness here is the version with all three times through the
-lineup: ![](/assets/17oct2022_zoom_outs_3-1.png) But surely these means
-mask a lot of heterogeneity - maybe it’s just the case that when Blake
-Snell gives up a hit, he actually becomes more likely than the average
-pitcher to give up another. We can test that theory by looking at
-individual pitcher means.
+lineup: ![](/assets/17oct2022_zoom_outs_3-1.png)
+
+But surely these means mask a lot of heterogeneity - maybe it’s just the
+case that when Blake Snell gives up a hit, he actually becomes more
+likely than the average pitcher to give up another. We can test that
+theory by looking at individual pitcher means.
 
 ![](/assets/17oct2022_scatters-1.png)
 
