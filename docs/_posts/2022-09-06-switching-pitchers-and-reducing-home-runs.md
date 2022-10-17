@@ -164,12 +164,12 @@ why isn’t this a perfect match? Why are there so many good pitchers
 pulled no matter what happened on the last AB and why are there so many
 ant-streaky pitchers pulled after giving up a hit?
 
-I have 2 theories: 1- managers aren’t that great at data analytics and
-they give in to the recency or availability bias too much 2- using only
-the result of the previous AB is not an accurate enough predictor of
-what will happen on the next AB (so managers might actually be really
-good at predicting the outcome of the next AB and they are using more
-input variables than just the result of the past AB)
+I have 2 theories: (1) managers aren’t that great at data analytics and
+they give in to the recency or availability bias too much and/or (2)
+using only the result of the previous AB is not an accurate enough
+predictor of what will happen on the next AB (so managers might actually
+be really good at predicting the outcome of the next AB and they are
+using more input variables than just the result of the past AB)
 
 I suspect it’s probably a blend of the two…but who knows? This is where
 machine learning comes in. Imagine if we could build a model that
