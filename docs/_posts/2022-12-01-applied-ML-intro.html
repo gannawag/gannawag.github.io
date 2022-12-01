@@ -166,12 +166,8 @@ T2 tradeoff)</li>
 minimize in-sample MSE</li>
 <li>How does it do out of sample?</li>
 </ul>
-<p><span class="math display">$$
-E_{T,\epsilon}[(\hat{y} - y)^2] = ...(algebra)... = bias + variance +
-noise
-\\
-= approximation + overfit + irreducible error
-$$</span> In OLS, <span class="math inline"><em>b</em><em>i</em><em>a</em><em>s</em> = 0</span>
+<p><span class="math display"><em>E</em><sub><em>T</em>, <em>ϵ</em></sub>[(<em>ŷ</em>−<em>y</em>)<sup>2</sup>] = ...(<em>a</em><em>l</em><em>g</em><em>e</em><em>b</em><em>r</em><em>a</em>)... = <em>b</em><em>i</em><em>a</em><em>s</em> + <em>v</em><em>a</em><em>r</em><em>i</em><em>a</em><em>n</em><em>c</em><em>e</em> + <em>n</em><em>o</em><em>i</em><em>s</em><em>e</em> = <em>a</em><em>p</em><em>p</em><em>r</em><em>o</em><em>x</em><em>i</em><em>m</em><em>a</em><em>t</em><em>i</em><em>o</em><em>n</em> + <em>o</em><em>v</em><em>e</em><em>r</em><em>f</em><em>i</em><em>t</em> + <em>i</em><em>r</em><em>r</em><em>e</em><em>d</em><em>u</em><em>c</em><em>i</em><em>b</em><em>l</em><em>e</em><em>e</em><em>r</em><em>r</em><em>o</em><em>r</em></span>
+In OLS, <span class="math inline"><em>b</em><em>i</em><em>a</em><em>s</em> = 0</span>
 but <span class="math inline"><em>v</em><em>a</em><em>r</em><em>i</em><em>a</em><em>n</em><em>c</em><em>e</em> &gt; 0</span>…we
 might be able to do better by allowing <em>some</em> bias in exchange
 for removing <em>a lot</em> of variance</p>
@@ -230,6 +226,36 @@ secret sauce)</h2>
 <li>Bagging</li>
 <li>Boosting</li>
 <li>Bayesian Regularization</li>
+</ul>
+</section>
+<section id="prediction-vs-estimation" class="slide level2">
+<h2>Prediction vs Estimation</h2>
+<p>Given that we found <span class="math inline"><em>f̂</em></span>, how
+do we use it in the real world?</p>
+<p>Tempting when <span class="math inline"><em>f̂</em> = <em>β̂</em>′<em>X</em></span>. We may
+want to interpret the coefficients in the same way we would in OLS, but
+should we?</p>
+</section>
+<section id="what-are-the-lasso-coefficients-actually-telling-us" class="slide level2">
+<h2>What are the LASSO Coefficients actually telling us?</h2>
+<p>The biases of LASSO: 1. Compactification bias 2. Expansion bias 3.
+Omitted variable bias 4. Shrinkage bias</p>
+</section>
+<section id="be-careful-about-your-question" class="slide level2">
+<h2>Be careful about your question</h2>
+<p>Is this an estimation or a prediction problem? <span class="math inline"><em>ŷ</em></span> or <span class="math inline"><em>β̂</em></span>?</p>
+<p>The things that make machine learning good at prediction might also
+be making it bad at estimation (complexity, regularization, tuning).</p>
+<p><span class="math inline"><em>ŷ</em></span> is not built for
+counterfactuals</p>
+</section>
+<section id="when-can-we-use-ml" class="slide level2">
+<h2>When can we use ML?</h2>
+<ul>
+<li>Data pre-processing (NLP, images)</li>
+<li><span class="math inline"><em>ŷ</em></span> tasks (prediction
+policy, targeting)</li>
+<li><span class="math inline"><em>ŷ</em></span> in the service of <span class="math inline"><em>β̂</em></span> (IV first stage)</li>
 </ul>
 </section>
 
