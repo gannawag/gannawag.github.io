@@ -1,31 +1,13 @@
-    from sklearn import linear_model
-    from sklearn.model_selection import GroupShuffleSplit
-    from sklearn import metrics
-    from sklearn.metrics import RocCurveDisplay
-    from sklearn.model_selection import GroupKFold
-    from sklearn.model_selection import GridSearchCV
-    from sklearn.model_selection import ParameterGrid
-    from sklearn.pipeline import Pipeline
-    from sklearn.svm import SVC
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.exceptions import DataConversionWarning
-    from sklearn import ensemble
+When training a machine learning model, we often use cross validation to
+search over parameters within a given model type. For example, choosing
+the best `alpha` in a lasso model. But what if we don’t know the best
+model type to use? SciKitLearn makes searching over different models
+straightforward.
 
-    import xgboost as xgb
-
-    import pandas as pd
-    import numpy as np
-
-    gs = GroupShuffleSplit(n_splits=2, test_size=.6, random_state=0)
-    train_ix, test_ix = next(gs.split(df.drop(["result.eventType_any_out", "game_date", "game_pk", "pitch_seq"], axis=1),
-                                      df["result.eventType_any_out"], 
-                                      groups=df["game_pk"]))
-
-    X_train = df.drop(["result.eventType_any_out", "game_date", "game_pk", "pitch_seq"], axis=1).loc[train_ix]
-    y_train = df["result.eventType_any_out"].loc[train_ix]
-
-    X_test = df.drop(["result.eventType_any_out", "game_date", "game_pk", "pitch_seq"], axis=1).loc[test_ix]
-    y_test = df["result.eventType_any_out"].loc[test_ix]
+I wrote the following code to search over a tuples where the first entry
+in each tuple is the type of model and the second entry is the set of
+parameters to search over for that model. Each tuple has different
+parameters since each model requires different parameters.
 
     #loop over model types and associated parameter sets
     model_param_set = [
@@ -57,6 +39,13 @@
         )
     ]
 
+To add models/parameters, just add another tuple or edit the existing
+tuples.
+
+Then, loop over the tuples with sklearn, saving the resulting scores to
+find the model+parameter combination that performs the best in the cross
+validation stage.
+
     #empty lists to populate with best models/params
     model_list = []
     model_score_list = []
@@ -78,6 +67,12 @@
       #add best of each model to list
       model_score_list.append(clf.best_score_)
       model_list.append(clf.best_estimator_)
+
+I use a grouped cross validation to keep groups together, but the
+approach works for more traditional cross validation.
+
+Finally, choose the best model+parameter tuple and plot the ROC for that
+set.
 
     #combine model list and model scores into one dict
     model_dict = dict(zip(model_list, model_score_list))
