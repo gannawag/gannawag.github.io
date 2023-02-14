@@ -14,7 +14,7 @@ place MVP vote getter. The names on the right side of each league panel
 show the MVPs, and the names on the left show those who came in 2nd
 place.
 
-<img src="/assets/unnamed-chunk-1-1.png" width="50%" />
+<img src="/assets/unnamed-chunk-1-1.png" width="110%" />
 
 One immediate conclusion from this plot is that there are a non-trivial
 number of times where the 2nd place vote getter actually had a higher
