@@ -9,6 +9,8 @@ outcomes as the MVP winners *if* they are indeed roughly the same skill
 level.
 
 This plot shows the difference in season WAR between the MVP and the 2nd
-place MVP vote getter.
+place MVP vote getter. The names on the right side of each league panel
+show the MVPs, and the names on the left show those who came in 2nd
+place.
 
 ![](/assets/unnamed-chunk-1-1.png)
