@@ -26,9 +26,11 @@ like this:
 3.  The number in parentheses is the chapter in Philosopher’s Stone that
     is most similar to Deathly Hallows chapter 6 among all the chapters
     in Philosopher’s Stone (in this case it’s Philosopher’s Stone
-    chapter 13).
+    chapter 15).
 4.  The length of the bar is the similarity score - the longer the bar,
     the more similar the chapters.
+5.  The different panels show the most similar chapter in each of the
+    books to chapter 6 of Deathly Hallows.
 
 <img src="/assets/unnamed-chunk-3-1.png" width="110%" />
 
