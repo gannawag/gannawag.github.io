@@ -19,14 +19,16 @@ Below, I plot these book-by-book *most similar* chapter similarity
 scores for every chapter in Deathly Hallows. The way to read the plot is
 like this:
 
-1- Take a Deathly Hallows chapter on the vertical axis (say chapter 6).
-2- Follow that chapter across from left to right. The first panel shows
-the max similarity score for that chapter with chapters in Philosopher’s
-Stone. 3- The number in parentheses is the chapter in Philosopher’s
-Stone that is most similar to Deathly Hallows chapter 6 among all the
-chapters in Philosopher’s Stone (in this case it’s Philosopher’s Stone
-chapter 13). 4- The length of the bar is the similarity score - the
-longer the bar, the more similar the chapters.
+1.  Take a Deathly Hallows chapter on the vertical axis (say chapter 6).
+2.  Follow that chapter across from left to right. The first panel shows
+    the max similarity score for that chapter with chapters in
+    Philosopher’s Stone.
+3.  The number in parentheses is the chapter in Philosopher’s Stone that
+    is most similar to Deathly Hallows chapter 6 among all the chapters
+    in Philosopher’s Stone (in this case it’s Philosopher’s Stone
+    chapter 13).
+4.  The length of the bar is the similarity score - the longer the bar,
+    the more similar the chapters.
 
 <img src="/assets/unnamed-chunk-3-1.png" width="110%" />
 
