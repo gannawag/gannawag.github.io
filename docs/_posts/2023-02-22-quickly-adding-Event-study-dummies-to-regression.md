@@ -14,6 +14,13 @@ variables for each value of event time. The other arguments to
 `dummy_cols` are a `select_columns` list and an instruction to remove
 the selected columns from the result.
 
+    #install.packages("fastDummies") #run if package not installed
+    dt <- cbind(dt, #cbind so we can merge the dummies back to the original
+                fastDummies::dummy_cols( 
+                  dt[,.(event_time)], #the column we want to turn into dummies
+                  select_columns = "event_time", #select this column
+                  remove_selected_columns = T)) #don't want to have duplicate names
+
 Now that our data.table has a a bunch of new columns that are the dummy
 variables, we need to get them into a regression.
 
@@ -24,8 +31,24 @@ get the names in the order of the event time, so when they go in the
 regression we don’t get confused by the output ordering. To do that, add
 another vector for the order in which we want the names to appear.
 
+    #get formula for regression so we don't have to type it in when we add more weeks
+    names_dt <- data.table(names = names(dt)[grepl("event_time", names(dt))],
+                            order = as.numeric(
+                              gsub(".*?_","",names(dt)[grepl("event_time",names(dt))]))
+                            )
+    setorder(names_dt, order)
+
 Now include the names in the regression using the `as.formula()`
 function, with some use of the `collapse` feature in the `paste`
 function. Notice the use of `paste0` vs `paste`. If you want to include
 other variables in the regression, you can just insert them in the
 `paste0` as additional arguments.
+
+    #this will show coefficients relative to omitted event time period
+    reg <- lm(
+      as.formula(
+        paste0("outcome ~ ", 
+               paste(names_dt$names, collapse = " + ")
+        )
+      ),
+      data = dt)
