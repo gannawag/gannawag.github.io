@@ -41,7 +41,7 @@ analytics:
     tracking_id: G-JG1TVQ5S9W
     anonymize_ip: false # default
   
-minimal_mistakes_skin: "contrast" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin: "dark" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 defaults:
   # _posts
