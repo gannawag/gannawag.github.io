@@ -43,6 +43,8 @@ analytics:
   
 minimal_mistakes_skin: "dark" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
+logo: "/assets/personal_photo.jpg"
+
 defaults:
   # _posts
   - scope:
