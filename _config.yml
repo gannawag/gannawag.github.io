@@ -1,23 +1,4 @@
 remote_theme: mmistakes/minimal-mistakes
 title: Grant Gannaway
 
-author_profile: true
 
-author:
-  name: "Grant Gannaway"
-#  avatar: "/assets/images/bio-photo.jpg"
-#  bio: "I am an **amazing** person." # Note: Markdown is allowed
-  location: "Boston Metro"
-  links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/GrantGannaway"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/gannawag"
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/grant-gannaway-321ba326/"
-    - label: "Google Site"
-      icon: "fas fa-fw fa-link"
-      url: "https://sites.google.com/site/grantgannaway/"
