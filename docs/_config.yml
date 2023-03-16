@@ -88,9 +88,7 @@ author:
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 
-include:
-  - .htaccess
-  - _pages
+include: ["_pages"]
   
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
