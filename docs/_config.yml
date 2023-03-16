@@ -77,6 +77,9 @@ author:
     - label: "Google Site"
       icon: "fas fa-fw fa-link"
       url: "https://sites.google.com/site/grantgannaway/"
+      
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
