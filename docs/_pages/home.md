@@ -1,9 +1,10 @@
 ---
-layout: splash
 permalink: /
 hidden: true
 header:
   overlay_color: "#5e616c"
+layout: posts
+author_profile: true
 
 excerpt: >
   A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios.<br />
