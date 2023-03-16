@@ -5,18 +5,10 @@ header:
   overlay_color: "#5e616c"
 layout: posts
 author_profile: true
+entries_layout: # list (default), grid
+classes: wide
 
 excerpt: >
-  A flexible two-column Jekyll theme. Perfect for building personal sites, blogs, and portfolios.<br />
-  <small><a href="https://github.com/mmistakes/minimal-mistakes/releases/tag/4.24.0">Latest release v4.24.0</a></small>
-feature_row:
-  - image_path: /assets/image0.jpeg
-    alt: "customizable"
-    title: "Super customizable"
-    excerpt: "Everything from the menus, sidebars, comments, and more can be configured or set with YAML Front Matter."
-    url: "/docs/configuration/"
-    btn_class: "btn--primary"
-    btn_label: "Learn more"    
+  A place for me to store my dabblings in data science, machine learning, sports, and sports cards. 
+  
 ---
-
-{% include feature_row %}
