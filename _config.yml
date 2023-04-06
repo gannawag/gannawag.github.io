@@ -1,2 +1,5 @@
 remote_theme: mmistakes/minimal-mistakes
 title: Grant Gannaway
+
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
