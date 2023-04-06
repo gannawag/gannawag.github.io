@@ -1,0 +1,84 @@
+---
+output: 
+  md_document
+knit: (function(inputFile, encoding) {
+      out_dir <- "_posts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(base.dir = "~/gannawag.github.io/docs/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "assets/")
+library(data.table)
+library(ggplot2)
+gc()
+```
+
+
+```{r data, include = F, echo=F}
+####LOAD####
+rc_price_dt <- fread("~/data_viz/rc_value/rc_value_by_name.csv")
+
+#count by year
+ggplot(rc_price_dt[, .N, by = setyear]) + 
+  geom_bar(aes(x=setyear,y=N), stat = "identity")
+#count by price
+ggplot(rc_price_dt[tot_price < 200]) + 
+  geom_histogram(aes(x=tot_price), binwidth = 1)
+
+#year of sale
+rc_price_dt[, year_of_sale := year(date_sold)]
+
+#mean sale price by player-year
+rc_price_dt[, mean_tot_price_py := mean(tot_price), by = .(name, year_of_sale)]
+rc_price_dt[, py_index := seq_len(.N), by = .(name, year_of_sale)]
+
+rc_price_dt_py <- rc_price_dt[py_index == 1]
+
+mvp_dt<-fread(file = "~/data_viz/rc_value/mlb_mvp_voting.csv")#####
+
+#merge on rc price####
+setkey(rc_price_dt_py, name, year_of_sale)
+mvp_dt[, name_dash := chartr("ÀÁÂÃÄÇÈÉÊÌÍÎÑÒÕÖŠÚÝŸŽàáâãéçéêëìíîïñòóôõšùûüúýÿž", 
+                             "AAAAACEEEIIINOOOSUYYZaaaaeceeeiiiinoooosuuuuyyz", 
+                             gsub(" ","-",Name))]
+sort(unique(mvp_dt[!name_dash %in% unique(rc_price_dt_py$name) & Rank < 3]$name_dash))
+sort(unique(rc_price_dt_py$name))
+setkey(mvp_dt, name_dash, year)
+mvp_dt[,mean_tot_price_py := NULL]
+mvp_dt[rc_price_dt_py, mean_tot_price_py_current := mean_tot_price_py]
+
+rc_price_dt_py[, year_of_sale_minus_1 := year_of_sale - 1]
+setkey(rc_price_dt_py, name, year_of_sale_minus_1)
+mvp_dt[rc_price_dt_py, mean_tot_price_py_next := mean_tot_price_py]
+
+rc_price_dt_py[, year_of_sale_minus_2 := year_of_sale - 2]
+setkey(rc_price_dt_py, name, year_of_sale_minus_2)
+mvp_dt[rc_price_dt_py, mean_tot_price_py_next_2 := mean_tot_price_py]
+
+rc_price_dt_py[, year_of_sale_minus_3 := year_of_sale - 3]
+setkey(rc_price_dt_py, name, year_of_sale_minus_3)
+mvp_dt[rc_price_dt_py, mean_tot_price_py_next_3 := mean_tot_price_py]
+
+#new vars
+mvp_dt[, first_place := `1st Place`]
+```
+
+```{r plots1, echo=FALSE}
+ggplot(mvp_dt[year > 1999 & Rank < 4 ,
+              .(median = median(mean_tot_price_py_current, na.rm=T)), 
+              by = .(Rank, league)]) + 
+  geom_bar(aes(x=Rank, y=median), stat="identity") +
+  geom_text(aes(x=Rank, y=median, label=scales::label_dollar()(median)), 
+            vjust = -0.25, size = 9) +
+  ylab("Median RC Sales Price") + xlab("MVP Voting Rank") + 
+  scale_y_continuous(labels = scales::label_dollar()) + 
+  facet_wrap(~toupper(league)) +
+  theme_bw() + 
+  theme(text = element_text(size = 30),
+        plot.title = element_text(hjust = 0.5, size = 25)) +
+  ggtitle("Median Rookie Card Sales Price of Players at each MVP Voting Rank")
+```
