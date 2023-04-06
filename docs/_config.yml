@@ -45,6 +45,8 @@ minimal_mistakes_skin: "dark" #"default" # "air", "aqua", "contrast", "dark", "d
 
 logo: "/assets/image0.jpeg"
 
+permalink: /:title/
+
 defaults:
   # _posts
   - scope:
