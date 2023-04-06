@@ -47,11 +47,17 @@ logo: "/assets/image0.jpeg"
 
 permalink: /:title/
 
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+
 defaults:
   # _posts
   - scope:
       path: ""
-      type: collections
+      type: posts
     values:
       layout: single
       author_profile: true
