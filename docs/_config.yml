@@ -51,7 +51,7 @@ permalink: /:title/
 collections:
   docs:
     output: true
-    permalink: /docs/
+    permalink: /docs/:path/
   collection-archive:
     output: true
     permalink: /:collection/:path/
