@@ -1,10 +1,5 @@
 # main links
 main:
-  - title: "Collections"
-    url: /docs/
-  - title: "About"
-    url: /about/
-  - title: "Sample Posts"
-    url: /year-archive/
-  - title: "Sample Collections"
-    url: /collection-archive/
+  - title: "Posts"
+    url: /portfolio/
+
