@@ -1,13 +1,6 @@
 ---
-output: 
-  md_document
+output: github_document 
 title: "Quickly Adding Dummies to Event Studies"
-knit: (function(inputFile, encoding) {
-      out_dir <- "_portfolio";
-      rmarkdown::render(inputFile,
-                        encoding=encoding,
-                        output_dir=file.path(dirname(inputFile), out_dir))})
-                        
 ---
 
 ```{r setup, include=FALSE,echo = FALSE}
