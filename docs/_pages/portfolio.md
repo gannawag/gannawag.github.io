@@ -1,5 +1,5 @@
 ---
-title: Posts
+title: Grant Gannaway
 layout: collection
 # permalink: /portfolio/
 collection: portfolio
