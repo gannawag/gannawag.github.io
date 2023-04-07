@@ -10,11 +10,11 @@ knit: (function(inputFile, encoding) {
                         
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE,echo = FALSE}
 knitr::opts_knit$set(base.dir = "~/gannawag.github.io/docs/", base.url = "/")
 knitr::opts_chunk$set(fig.path = "assets/")
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
-# knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
