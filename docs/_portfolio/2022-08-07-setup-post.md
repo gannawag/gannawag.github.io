@@ -1,3 +1,6 @@
+---
+title: "Foo Bar Identity"
+---
 ## github pages guide
 
 I started with the guide here: <https://pages.github.com/>
