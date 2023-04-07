@@ -2,8 +2,8 @@
 output: github_document 
 title: "Quickly Adding Dummies to Event Studies"
 ---
-Need text
-```{r, include=FALSE,echo = FALSE}
+
+```{r,echo = FALSE}
 knitr::opts_knit$set(base.dir = "~/gannawag.github.io/docs/", base.url = "/")
 knitr::opts_chunk$set(fig.path = "assets/")
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
