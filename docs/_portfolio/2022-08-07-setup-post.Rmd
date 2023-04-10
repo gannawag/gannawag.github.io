@@ -1,10 +1,6 @@
 ---
 
-knit: (function(inputFile, encoding) {
-      out_dir <- "_portfolio";
-      rmarkdown::render(inputFile,
-                        encoding=encoding,
-                        output_dir=file.path(dirname(inputFile), out_dir))})
+
 title: Setup Post
 
 ---
