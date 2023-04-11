@@ -41,15 +41,16 @@ rmarkdown file (`.rmd`). I save the `.rmd` file in the `docs` folder.
 
 In the `.rmd` file header, I specify
 
-    {r header, eval=FALSE}
-    output: 
-      md_document
+``` r
+output: 
+  md_document
 
-    knit: (function(inputFile, encoding) {
-          out_dir <- "_posts";
-          rmarkdown::render(inputFile,
-                            encoding=encoding,
-                            output_dir=file.path(dirname(inputFile), out_dir))})
+knit: (function(inputFile, encoding) {
+      out_dir <- "_posts";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+```
 
 This ensures two things: 1. the output is a markdown file (`.md`) which
 works with github pages 2. the `.md` file is saved in the `_posts`
