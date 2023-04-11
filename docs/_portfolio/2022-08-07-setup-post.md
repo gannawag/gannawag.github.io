@@ -1,7 +1,7 @@
 ---
 output: 
   md_document:
-    variant: gfm
+    variant: markdown+backtick_code_blocks
     preserve_yaml: TRUE
 knit: (function(inputFile, encoding) {
       out_dir <- "_portfolio";
@@ -16,13 +16,13 @@ title: Setup Post
 
 I started with the guide here: <https://pages.github.com/>
 
-Here are some things that are important for each post…
+Here are some things that are important for each post...
 
 ## Name of the file
 
-The rmarkdown file must be named “YYYY-MM-DD-name-of-post.Rmd”. Github
-pages will automatically title the post “name of post” (with the dashes
-replaced by spaces). The file name doesn’t need to be capitalized,
+The rmarkdown file must be named "YYYY-MM-DD-name-of-post.Rmd". Github
+pages will automatically title the post "name of post" (with the dashes
+replaced by spaces). The file name doesn't need to be capitalized,
 jekyll will capitalize the post title automatically.
 
 ## File organization
@@ -82,7 +82,7 @@ in the project directory).
 
 ### Including Plots Example to make sure it works
 
-![](C:/Users/grant/OneDrive/Documents/gannawag.github.io/docs/_portfolio/2022-08-07-setup-post_files/figure-gfm/pressure-1.png)<!-- -->
+![](C:/Users/grant/OneDrive/Documents/gannawag.github.io/docs/_portfolio/2022-08-07-setup-post_files/figure-markdown/pressure-1.png)
 
 ## Github
 
