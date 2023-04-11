@@ -1,3 +1,17 @@
+---
+output: 
+  md_document:
+    variant: gfm
+    preserve_yaml: TRUE
+knit: (function(inputFile, encoding) {
+      out_dir <- "_portfolio";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+title: Setup Post
+
+---
+
 ## github pages guide
 
 I started with the guide here: <https://pages.github.com/>
