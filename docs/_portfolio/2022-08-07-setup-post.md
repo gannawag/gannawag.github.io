@@ -63,9 +63,10 @@ To process images, all images need to be saved to the `assets` folder,
 which is located within the `docs` folder. I do this with an r code
 block right below the header with the following:
 
-    {r setup}
-    knitr::opts_chunk$set(echo = TRUE)
-    knitr::opts_chunk$set(fig.path ="/assets/")
+``` r
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.path ="/assets/")
+```
 
 ## Had some issues with figures
 
@@ -74,16 +75,17 @@ This post solved my issues:
 
 I had to change the figure option to this:
 
-    {r, eval=FALSE}
-    knitr::opts_knit$set(base.dir = "~/gannawag.github.io/docs/", base.url = "/")
-    knitr::opts_chunk$set(fig.path = "assets/")
+``` r
+knitr::opts_knit$set(base.dir = "~/gannawag.github.io/docs/", base.url = "/")
+knitr::opts_chunk$set(fig.path = "assets/")
+```
 
 Need to be sure we are populating the correct `assets` folder (should be
 in the project directory).
 
 ### Including Plots Example to make sure it works
 
-![](C:/Users/grant/OneDrive/Documents/gannawag.github.io/docs/_portfolio/2022-08-07-setup-post_files/figure-markdown/pressure-1.png)
+![](/assets/pressure-1.png)
 
 ## Github
 
