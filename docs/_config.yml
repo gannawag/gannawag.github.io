@@ -101,7 +101,7 @@ defaults:
 
 author:
   name: "Grant Gannaway"
-#  avatar: "/assets/images/bio-photo.jpg"
+  avatar: "/assets/image0.jpeg"
 #  bio: "I am an **amazing** person." # Note: Markdown is allowed
   location: "Boston Metro"
   links:
