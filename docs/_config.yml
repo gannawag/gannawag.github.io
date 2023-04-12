@@ -43,7 +43,7 @@ analytics:
   
 minimal_mistakes_skin: "dark" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
-logo: "/assets/image0.jpeg"
+# logo: "/assets/image0.jpeg"
 
 #permalink: /:title/
 
