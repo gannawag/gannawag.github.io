@@ -1,4 +1,23 @@
-    (dt <- data.table(iris))
+---
+output: 
+  md_document:
+    variant: markdown+backtick_code_blocks
+    preserve_yaml: TRUE
+knit: (function(inputFile, encoding) {
+      out_dir <- "_portfolio";
+      rmarkdown::render(inputFile,
+                        encoding=encoding,
+                        output_dir=file.path(dirname(inputFile), out_dir))})
+title: Lapply with `data.table`
+
+---
+
+Suppose you want to find the grouped mean of a variable in a data
+frame - the mean of a variable within each group. Str
+
+``` r
+(dt <- data.table(iris))
+```
 
     ##      Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
     ##   1:          5.1         3.5          1.4         0.2    setosa
@@ -15,9 +34,11 @@
 
 Add columns of summary stats to the original data one at a time
 
-    dt[, mean_slength_by_species := mean(Sepal.Length), by = .(Species)]
-    dt[, mean_plength_by_species := mean(Petal.Length), by = .(Species)]
-    dt
+``` r
+dt[, mean_slength_by_species := mean(Sepal.Length), by = .(Species)]
+dt[, mean_plength_by_species := mean(Petal.Length), by = .(Species)]
+dt
+```
 
     ##      Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
     ##   1:          5.1         3.5          1.4         0.2    setosa
@@ -46,7 +67,9 @@ Add columns of summary stats to the original data one at a time
 
 Create a new table with summary stats
 
-    dt[, lapply(.SD, mean), .SDcols = c("Sepal.Length","Petal.Length"), by = .(Species)]
+``` r
+dt[, lapply(.SD, mean), .SDcols = c("Sepal.Length","Petal.Length"), by = .(Species)]
+```
 
     ##       Species Sepal.Length Petal.Length
     ## 1:     setosa        5.006        1.462
@@ -55,8 +78,10 @@ Create a new table with summary stats
 
 Create new columns in the original data with summary stats
 
-    dt[, paste0("species_mean_",c("Sepal.Length","Petal.Length")) := lapply(.SD, mean), .SDcols = c("Sepal.Length","Petal.Length"), by = .(Species)]
-    dt
+``` r
+dt[, paste0("species_mean_",c("Sepal.Length","Petal.Length")) := lapply(.SD, mean), .SDcols = c("Sepal.Length","Petal.Length"), by = .(Species)]
+dt
+```
 
     ##      Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
     ##   1:          5.1         3.5          1.4         0.2    setosa
