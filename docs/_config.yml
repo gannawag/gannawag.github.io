@@ -43,7 +43,7 @@ analytics:
   
 minimal_mistakes_skin: "dark" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
-logo: "/assets/image0.jpeg"
+# logo: "/assets/image0.jpeg"
 
 #permalink: /:title/
 
@@ -93,13 +93,15 @@ defaults:
       type: portfolio
     values:
       layout: single
-      author_profile: false
+      author_profile: true
+      comments: true
       share: true
+      related: true
       title: /:path/
 
 author:
   name: "Grant Gannaway"
-#  avatar: "/assets/images/bio-photo.jpg"
+  avatar: "/assets/image0.jpeg"
 #  bio: "I am an **amazing** person." # Note: Markdown is allowed
   location: "Boston Metro"
   links:
