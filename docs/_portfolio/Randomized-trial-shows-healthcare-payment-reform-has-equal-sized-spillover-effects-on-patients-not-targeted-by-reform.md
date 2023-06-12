@@ -8,42 +8,20 @@ knit: (function(inputFile, encoding) {
       rmarkdown::render(inputFile,
                         encoding=encoding,
                         output_dir=file.path(dirname(inputFile), out_dir))})
-title: Randomized trial shows healthcare payment reform has equal-sized spillover effects on patients not targeted by reform
+title: Reading Notes - Randomized trial shows healthcare payment reform has equal-sized spillover effects on patients not targeted by reform
 ---
 
-```{=html}
-\<!\--#
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
 
-Reading Order:
+# My Reading Notes
 
-1.  Abstract
-2.  Conclusion
-3.  Intro
-4.  \-\-\-\-\-\--
-5.  Results
-6.  Any Remaining Questions
-7.  Abstract
-8.  Conclusion
+**Paper: Randomized trial shows healthcare payment reform has
+equal-sized spillover effects on patients not targeted by reform**
 
-\--\>
-```
-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\--
-
-```{=html}
-<!-- #add image from paper -->
-```
-# Reading Notes
-
-**Randomized trial shows healthcare payment reform has equal-sized
-spillover effects on patients not targeted by reform**
-
-*Liran Einav, Amy Finkelstein, Yunan Ji, and Neale Mahoney*
+*Paper By Liran Einav, Amy Finkelstein, Yunan Ji, and Neale Mahoney*
 
 # What is this paper about?
 
-```{=html}
-<!--# Yellow Highlight + Black Writing -->
-```
 -   Spillovers in health care
 
 -   Medicare changes how they pay for something to one group, that
@@ -72,9 +50,6 @@ spillover effects on patients not targeted by reform**
 
 # What gap is this paper filling?
 
-```{=html}
-<!--# Yellow Highlight + Black Writing -->
-```
 1.  Policies that ignore spillovers miss a big part of the effect of the
     policy
 2.  Any study that looks at the direct effects only may be biased since
@@ -84,9 +59,6 @@ spillover effects on patients not targeted by reform**
 
 # What makes this paper interesting?
 
-```{=html}
-<!--# Yellow Highlight + Black Writing -->
-```
 -   The TM to MA spillover effects are an important piece of the
     healthcare market
 
@@ -102,9 +74,6 @@ spillover effects on patients not targeted by reform**
 
 # What are the results?
 
-```{=html}
-<!--# Blue Highlight + Blue Pen -->
-```
 Targeting *traditional medicare* patients with a payment reform that
 changes payment from fee-for-service to a bundled comprehensive payment
 reduces discharges to post acute care facilities for *both* the targeted
@@ -115,9 +84,6 @@ percentage points).
 
 # What assumptions are being made?
 
-```{=html}
-<!--# Blue Highlight + Blue Pen -->
-```
 -   Randomization worked
 
     -   "the (admittedly strong) identifying assumption is that,
@@ -140,12 +106,12 @@ percentage points).
 
 # Other Ideas
 
-```{=html}
-<!--# Red Highlight + Red Pen -->
-```
 -   Given more granular (at the time level) data, I think they could
     have shown the time trend analysis for both groups.
 
+```{=html}
+<!-- -->
+```
 -   Maybe could use a bordering MSA design to test what happens in
     non-selected MSAs that border selected MSAs
 
@@ -156,9 +122,6 @@ percentage points).
 
 # What is the Tweet?
 
-```{=html}
-<!--# Green Highlight + Black Pen -->
-```
 Spillover effects in health care are fascinating. These authors looked
 at the spillover effects of an MSA-level randomized Medicare program
 aimed at reducing spending for *traditional Medicare enrollees* on the
