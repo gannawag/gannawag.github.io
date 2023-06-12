@@ -14,6 +14,6 @@ entries_layout: grid # list (default), grid
 classes: wide
 
 excerpt: >
-  A place for me to store my dabblings in data science, machine learning, sports, and sports cards. 
+ Machine learning, health care, sports, data science.
   
 ---
